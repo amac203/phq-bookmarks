@@ -1,0 +1,19 @@
+.bookmarkDisplay {
+  padding: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.successMessage {
+  background-color: #05F67A;
+  padding: 1em;
+  display: flex;
+}
+.errorMessage {
+  background-color: #F5707C;
+  padding: 1em;
+  display: flex;
+}
+.bookmarkName {
+  padding-right: 1em;
+}

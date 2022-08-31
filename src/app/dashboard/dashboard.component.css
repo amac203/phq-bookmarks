@@ -1,0 +1,26 @@
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.new-bookmark {
+  color: #05F67A;
+  font-weight: bold;
+}
+.page-selector {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.page-number {
+  font-size: 16px;
+  padding-left: 0.5em;
+  cursor: pointer;
+}
+.selected-page {
+  font-weight: bold;
+  cursor: default;
+}

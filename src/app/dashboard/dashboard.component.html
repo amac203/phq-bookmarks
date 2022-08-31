@@ -1,0 +1,42 @@
+<h1>Bookmarks</h1>
+<h2>Add a new bookmark:</h2>
+<!-- bookmark detail component for adding new item -->
+<app-bookmark-detail-component
+ [newMode] = "true"
+ (submitNewBookmark)="addNewBookmarkToDatabase($event)"
+ >
+</app-bookmark-detail-component>
+<h2>Saved bookmarks:</h2>
+<button *ngIf="!editMode" (click)="editModeOn()">Edit Mode</button>
+<button *ngIf="editMode" (click)="editModeOff()">Finish</button>
+<div *ngIf="editMode">
+  <div *ngFor="let bookmark of bookmarks; let i = index; trackBy: trackByFn">
+    <app-bookmark-detail-component
+    [name] = "bookmark.name"
+    [link] = "bookmark.link"
+    [bookmarkKey] = "bookmark.bookmarkList"
+    [editMode] = "true"
+    (nameChange)="updateBookmarkName($event, bookmark.bookmarkList)"
+    (linkChange)="updateBookmarkLink($event, bookmark.bookmarkList)"
+    (deleteBookmark)="deleteBookmark(bookmark.bookmarkList)"
+    >
+    </app-bookmark-detail-component>
+  </div>
+</div>
+<div *ngIf="!editMode">
+  <div *ngFor="let bookmark of currentPageBookmarks; let i = index">
+    <app-bookmark-detail-component
+    [ngClass]="{'new-bookmark' : this.newBookmarkAddedMode && i == 0}"
+    [name]="bookmark.name"
+    [link] = "bookmark.link"
+    [editMode] = "false"
+    >
+    </app-bookmark-detail-component>
+  </div>
+</div>
+<div class="page-selector">
+  <h3>Page:</h3>
+  <div *ngFor="let page of totalPages; let i = index">
+    <div [ngClass]="{'page-number' : true, 'selected-page' : i + 1 == currentPage}" (click)="changePage(i + 1)">{{i + 1}}</div>
+  </div>
+<div>

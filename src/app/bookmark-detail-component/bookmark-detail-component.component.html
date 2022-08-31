@@ -1,0 +1,21 @@
+<div class="bookmarkDisplay" *ngIf="newMode">
+  <input (focus)="successDisplayOff()" class="bookmarkName" [(ngModel)]="newName" onclick="this.select()">
+  <input (focus)="successDisplayOff()" [(ngModel)]="newLink" onclick="this.select()">
+  <button (click)="addNewBookmark()">Add</button>
+</div>
+<div class="errorMessage" *ngIf="errorDisplay">
+  <h3>{{errorMessage}}</h3>
+</div>
+<div class="successMessage" *ngIf="successDisplay">
+  <h3>{{successMessage}}</h3>
+</div>
+<div class="bookmarkDisplay" *ngIf="!editMode && !newMode">
+  <h3 class="bookmarkName">{{name}}</h3>
+  <a href="{{link}}">{{link}}</a>
+</div>
+<!-- display the inputs if adding, or editing existing bookmark -->
+<div class="bookmarkDisplay" *ngIf="editMode">
+  <input class="bookmarkName" [(ngModel)]="name" (ngModelChange)="nameEdit($event)" onclick="this.select()">
+  <input [(ngModel)]="link" (ngModelChange)="linkEdit($event)" onclick="this.select()">
+  <button (click)="submitDeleteBookmark()">Delete</button>
+</div>
